@@ -17,7 +17,6 @@ def test_exec1():
     assert result.returncode == 0, f"Script failed with output: {result.stdout}\nErrors: {result.stderr}"
 
 
-
 def test_exec2():
     #path to executable
     script_dir = os.path.dirname(os.path.abspath(__file__))
