@@ -12,7 +12,7 @@ def test_exec():
     script_path = os.path.abspath(script_path)  # Ensure the path is absolute
 
     # Run the script using subprocess
-    result = subprocess.run(['python3', script_path], capture_output=True, text=True)
+    result = subprocess.run(['python3', script_path, "16"], capture_output=True, text=True)
         
     # Check if the script ran successfully
     assert result.returncode == 0, f"Script failed with output: {result.stdout}\nErrors: {result.stderr}"
