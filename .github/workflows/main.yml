@@ -27,15 +27,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libopenmpi-dev libfftw3-dev libhdf5-dev
 
-    - name: Set environment variables to disable threading
-      run: |
-        conda env config vars set OMP_NUM_THREADS=1
-        conda env config vars set NUMEXPR_MAX_THREADS=1
-
     - name: Create and activate conda environment
       run: |
-        conda create -n dedalus-env python=${{ matrix.python-version }} -y
-        echo "conda activate dedalus-env" >> $GITHUB_ENV
+        conda create -n dedalus_env python=${{ matrix.python-version }} -y
+        conda env config vars set OMP_NUM_THREADS=1 -n dedalus_env
+        conda env config vars set NUMEXPR_MAX_THREADS=1 -n dedalus_env
+        echo "conda activate dedalus_env" >> $GITHUB_ENV
 
     - name: Install Dedalus and dependencies
       run: |
@@ -51,7 +48,5 @@ jobs:
       run: |
         conda activate dedalus_env
         pytest -n auto
-
-
 
 
