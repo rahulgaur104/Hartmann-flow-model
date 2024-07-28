@@ -27,26 +27,24 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libopenmpi-dev libfftw3-dev libhdf5-dev
 
-    - name: Create and activate conda environment
+    - name: Create conda environment
       run: |
         conda create -n dedalus_env python=${{ matrix.python-version }} -y
         conda env config vars set OMP_NUM_THREADS=1 -n dedalus_env
         conda env config vars set NUMEXPR_MAX_THREADS=1 -n dedalus_env
-        echo "conda activate dedalus_env" >> $GITHUB_ENV
 
-    - name: Install Dedalus and dependencies
+    - name: Activate conda environment and install Dedalus
+      shell: bash -l {0}
       run: |
+        source ~/.bashrc
         conda activate dedalus_env
         conda install -c conda-forge dedalus mpi4py h5py fftw -y
-
-    - name: Install pytest and pytest-xdist
-      run: |
-        conda activate dedalus_env
         pip install pytest pytest-xdist
 
     - name: Run tests
+      shell: bash -l {0}
       run: |
+        source ~/.bashrc
         conda activate dedalus_env
         pytest -n auto
-
 
