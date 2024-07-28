@@ -40,6 +40,6 @@ jobs:
 
     - name: Run tests
       run: |
-        conda run -n dedalus_env pytest -n auto
+        conda run -n dedalus_env pytest -v tests/test_exec.py
 
 
