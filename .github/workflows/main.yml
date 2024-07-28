@@ -26,10 +26,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libopenmpi-dev libfftw3-dev libhdf5-dev
 
-    - name: Install Dedalus and dependencies
+    - name: Install Dedalus 2 and dependencies
       shell: bash -l {0}
       run: |
-        conda install -c conda-forge dedalus mpi4py h5py fftw matplotlib numpy scipy -y
+        conda install -c conda-forge "dedalus<3.0" mpi4py h5py fftw matplotlib numpy scipy -y
         pip install pytest pytest-xdist
 
     - name: List directory contents
