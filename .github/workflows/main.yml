@@ -33,18 +33,13 @@ jobs:
         conda env config vars set OMP_NUM_THREADS=1 -n dedalus_env
         conda env config vars set NUMEXPR_MAX_THREADS=1 -n dedalus_env
 
-    - name: Activate conda environment and install Dedalus
-      shell: bash -l {0}
+    - name: Install Dedalus and dependencies
       run: |
-        source ~/.bashrc
-        conda activate dedalus_env
-        conda install -c conda-forge dedalus mpi4py h5py fftw -y
-        pip install pytest pytest-xdist
+        conda run -n dedalus_env conda install -c conda-forge dedalus mpi4py h5py fftw -y
+        conda run -n dedalus_env pip install pytest pytest-xdist
 
     - name: Run tests
-      shell: bash -l {0}
       run: |
-        source ~/.bashrc
-        conda activate dedalus_env
-        pytest -n auto
+        conda run -n dedalus_env pytest -n auto
+
 
