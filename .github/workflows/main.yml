@@ -40,6 +40,7 @@ jobs:
       run: ls -R
 
     - name: Run tests
+      shell: bash -l {0}
       run: |
         conda activate dedalus_env
         pytest -v tests/test_exec.py
