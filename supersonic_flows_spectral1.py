@@ -15,11 +15,8 @@ from dedalus.core.operators import integrate
 import numpy as np
 
 import matplotlib
-#matplotlib.use('TkAgg')  # or 'Qt5Agg' or any other interactive backend
 
 from matplotlib import pyplot as plt
-import pdb
-
 import sys
 
 if sys.argv[1] is None:

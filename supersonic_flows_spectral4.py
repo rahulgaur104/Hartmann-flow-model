@@ -16,6 +16,12 @@ import numpy as np
 
 from matplotlib import pyplot as plt
 import pdb
+import sys
+
+if sys.argv[1] is None:
+    Nz = int(128)
+else:
+    Nz = int(eval(sys.argv[1]))
 
 
 len_d_i = 5
@@ -28,7 +34,7 @@ plot_counter = 0
 
 for j in range(len_d_i):
     # Define the domain
-    nz = 128  # Number of grid points
+    nz = Nz  # Number of grid points
     Lz = 1.0  # Length of the domain in the z-direction
     
     # Create basis and domain using Chebyshev basis

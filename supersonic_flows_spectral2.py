@@ -16,10 +16,14 @@ from dedalus.core.operators import integrate
 import numpy as np
 
 import matplotlib
-#matplotlib.use('TkAgg')  # or 'Qt5Agg' or any other interactive backend
 
 from matplotlib import pyplot as plt
-import pdb
+import sys
+
+if sys.argv[1] is None:
+    Nz = int(128)
+else:
+    Nz = int(eval(sys.argv[1]))
 
 
 len_d_i = 1
@@ -29,7 +33,7 @@ d_i_array = np.linspace(0.01, 1, len_d_i)
 plot_indices = [0, 10, 29, 39, -1]
 
 # Define the domain
-nz = 128  # Number of grid points
+nz = Nz  # Number of grid points
 Lz = 1.0  # Length of the domain in the z-direction
 
 # Create basis and domain using Chebyshev basis
