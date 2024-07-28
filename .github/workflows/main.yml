@@ -30,7 +30,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge "dedalus<3.0" mpi4py h5py fftw matplotlib numpy scipy -y
-        pip install pytest pytest-xdist
+        pip install pytest pytest-xdist pytest-cov
 
     - name: List directory contents
       shell: bash -l {0}
@@ -39,10 +39,14 @@ jobs:
     - name: Run tests
       shell: bash -l {0}
       run: |
-        pytest -v tests/test_exec.py
+        pytest -v tests/test_exec.py --cov=./ --cov-report=xml
+
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
