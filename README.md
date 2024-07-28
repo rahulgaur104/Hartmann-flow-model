@@ -5,5 +5,5 @@
 
 
 This repository contains a set of scripts that solve a simplified model, similar to the Hartmann flow problem in a channel. 
-The equations solved in this models are given in this preprint:[Effect of insulator end cap thickness of time-dependent Hartmann flow in a rotating mirror](https://arxiv.org/abs/2405.17786)
+The equations solved in this model are given in this preprint:[Effect of insulator end cap thickness of time-dependent Hartmann flow in a rotating mirror](https://arxiv.org/abs/2405.17786)
 
